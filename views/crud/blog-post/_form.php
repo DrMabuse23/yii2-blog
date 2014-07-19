@@ -5,7 +5,7 @@ use yii\bootstrap\ActiveForm;
 
 /**
 * @var yii\web\View $this
-* @var common\models\app\BlogPost $model
+* @var drmabuse\blog\models\app\BlogPost $model
 * @var yii\widgets\ActiveForm $form
 */
 ?>
@@ -21,7 +21,7 @@ use yii\bootstrap\ActiveForm;
 			<?= $form->field($model, 'default_title')->textInput(['maxlength' => 128]) ?>
 			<?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
 			<?=         $form->field($model, 'author_id')->dropDownList(
-            \yii\helpers\ArrayHelper::map(common\models\app\BlogAuthor::find()->all(),'id','name'),
+            \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\BlogAuthor::find()->all(),'id','name'),
             ['prompt'=>'Choose...']    // relation provider
         )->label(
             Html::activeLabel($model, 'author_id', []).' '.
@@ -33,7 +33,7 @@ use yii\bootstrap\ActiveForm;
         ); ?>
 			<?= $form->field($model, 'tags')->textarea(['rows' => 6]) ?>
 			<?=         $form->field($model, 'status')->dropDownList(
-            \yii\helpers\ArrayHelper::map(common\models\app\BlogStatus::find()->all(),'id','name'),
+            \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\BlogStatus::find()->all(),'id','name'),
             ['prompt'=>'Choose...']    // relation provider
         )->label(
             Html::activeLabel($model, 'status', []).' '.

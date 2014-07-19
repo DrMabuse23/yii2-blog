@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var common\models\app\BlogStatus $model
+ * @var drmabuse\blog\models\app\BlogStatus $model
  */
 
 $this->title = 'Blog Status Update ' . $model->name . '';

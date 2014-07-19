@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 
 /**
 * @var yii\web\View $this
-* @var common\models\app\BlogComment $model
+* @var drmabuse\blog\models\app\BlogComment $model
 */
 
 $this->title = 'Blog Comment View ' . $model->id . '';
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = 'View';
         <?= $model->id ?>    </h3>
 
 
-    <?php $this->beginBlock('common\models\app\BlogComment'); ?>
+    <?php $this->beginBlock('drmabuse\blog\models\app\BlogComment'); ?>
 
     <?php echo DetailView::widget([
     'model' => $model,
@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = 'View';
                      'encodeLabels' => false,
                      'items' => [ [
     'label'   => '<span class="glyphicon glyphicon-asterisk"></span> BlogComment',
-    'content' => $this->blocks['common\models\app\BlogComment'],
+    'content' => $this->blocks['drmabuse\blog\models\app\BlogComment'],
     'active'  => true,
 ], ]
                  ]

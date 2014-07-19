@@ -5,7 +5,7 @@ use yii\bootstrap\ActiveForm;
 
 /**
 * @var yii\web\View $this
-* @var common\models\app\BlogSeo $model
+* @var drmabuse\blog\models\app\BlogSeo $model
 * @var yii\widgets\ActiveForm $form
 */
 ?>

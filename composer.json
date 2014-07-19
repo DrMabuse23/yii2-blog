@@ -4,6 +4,7 @@
 	"type": "yii2-extension",
 	"keywords": ["yii2","blog"],
 	"license": "MIT",
+    "homepage":"https://github.com/DrMabuse23/yii2-blog",
 	"authors": [
 		{
 			"name": "Pascal Brewing",
@@ -14,5 +15,8 @@
 		"psr-4": {
 			"drmabuse\\blog\\": ""
 		}
-	}
+	},
+    "require": {
+        "yiisoft/yii2": "*"
+    }
 }

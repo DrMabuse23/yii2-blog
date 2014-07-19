@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /**
 * @var yii\web\View $this
-* @var common\models\app\BlogSeo $model
+* @var drmabuse\blog\models\app\BlogSeo $model
 */
 
 $this->title = 'Create';

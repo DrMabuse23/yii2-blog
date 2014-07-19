@@ -5,7 +5,7 @@ use yii\bootstrap\ActiveForm;
 
 /**
 * @var yii\web\View $this
-* @var common\models\app\BlogComment $model
+* @var drmabuse\blog\models\app\BlogComment $model
 * @var yii\widgets\ActiveForm $form
 */
 ?>
@@ -21,7 +21,7 @@ use yii\bootstrap\ActiveForm;
 			<?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 			<?= $form->field($model, 'status')->textInput() ?>
 			<?=         $form->field($model, 'post_id')->dropDownList(
-            \yii\helpers\ArrayHelper::map(common\models\app\BlogPost::find()->all(),'id','default_title'),
+            \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\BlogPost::find()->all(),'id','default_title'),
             ['prompt'=>'Choose...']    // relation provider
         )->label(
             Html::activeLabel($model, 'post_id', []).' '.

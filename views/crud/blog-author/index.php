@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-* @var common\models\app\BlogAuthorSearch $searchModel
+* @var drmabuse\blog\models\app\BlogAuthorSearch $searchModel
 */
 
 $this->title = 'Blog Authors';

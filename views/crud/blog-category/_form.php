@@ -5,7 +5,7 @@ use yii\bootstrap\ActiveForm;
 
 /**
 * @var yii\web\View $this
-* @var common\models\app\BlogCategory $model
+* @var drmabuse\blog\models\app\BlogCategory $model
 * @var yii\widgets\ActiveForm $form
 */
 ?>
@@ -22,7 +22,7 @@ use yii\bootstrap\ActiveForm;
 			<?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
 			<?= $form->field($model, 'rank')->textInput() ?>
 			<?=         $form->field($model, 'seo_id')->dropDownList(
-            \yii\helpers\ArrayHelper::map(common\models\app\BlogSeo::find()->all(),'id','default_title'),
+            \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\BlogSeo::find()->all(),'id','default_title'),
             ['prompt'=>'Choose...']    // relation provider
         )->label(
             Html::activeLabel($model, 'seo_id', []).' '.

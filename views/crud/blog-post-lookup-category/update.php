@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var common\models\app\BlogPostLookupCategory $model
+ * @var drmabuse\blog\models\app\BlogPostLookupCategory $model
  */
 
 $this->title = 'Blog Post Lookup Category Update ' . $model->category_id . '';

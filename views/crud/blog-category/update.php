@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var common\models\app\BlogCategory $model
+ * @var drmabuse\blog\models\app\BlogCategory $model
  */
 
 $this->title = 'Blog Category Update ' . $model->id . '';
