@@ -1,8 +1,8 @@
 {
-	"name": "yii2-blog/yii2-blog",
+	"name": "drmabuse/yii2-blog",
 	"description": "simple blog module",
 	"type": "yii2-extension",
-	"keywords": ["yii2","extension"],
+	"keywords": ["yii2","blog"],
 	"license": "MIT",
 	"authors": [
 		{
