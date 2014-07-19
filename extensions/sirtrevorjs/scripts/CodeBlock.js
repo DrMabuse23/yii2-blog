@@ -22,6 +22,7 @@ SirTrevor.Blocks.Code = (function(){
         title: function() {
             return i18n.t('blocks:code:title');
         },
+        icon_name: 'code',
 
         // Boolean; show this blockType of the toolbar
         toolbarEnabled: true,
@@ -65,7 +66,7 @@ SirTrevor.Blocks.Code = (function(){
         paste_options: {
             // String; (can use underscore template tags)
             // Defines the HTML for the paste template
-            html: "<code><pre class=\"st-paste-block\"></pre></code>"
+            html: "<code><pre class=\"st-paste-block prettyprint linenmus\"></pre></code>"
         },
 
         upload_options: {
@@ -84,7 +85,7 @@ SirTrevor.Blocks.Code = (function(){
         // st-text-block – gives the block the ability to use the formatting controls
 
         editorHTML: function() {
-            return "<code><pre class='st-text-block' contenteditable='true'></pre></code>";
+            return "<code><pre class='st-text-block prettyprint linenmus' contenteditable='true'></pre></code>";
         },
 
         // Element shorthands
@@ -154,6 +155,7 @@ SirTrevor.Blocks.Code = (function(){
         // Useful for initialising extra pieces of UI or binding extra events.
         // In this example we add an extra button, just because.
         onBlockRender: function() {
+
 //            this.$editor.append($('<button>', {
 //                click: function() {
 //                    alert('Yo dawg, you clicked my button');

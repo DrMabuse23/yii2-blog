@@ -15,7 +15,9 @@ module.exports = function(grunt) {
                     '<%= bower %>underscore/underscore.js',
                     '<%= bower %>Eventable/eventable.js',
                     'scripts/sir-trevor.js',
-                    'scripts/CodeBlock.js'
+                    'scripts/CodeBlock.js',
+                    'scripts/ColumnsBlock.js',
+
                 ],
                 dest: '<%= dist %>/<%= pkg.name %>-<%= pkg.version %>.min.js'
             }

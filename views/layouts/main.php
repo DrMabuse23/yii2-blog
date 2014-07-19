@@ -99,6 +99,18 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
+<script src="//google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<script>
+    (function($){
+        "use strict";
+        $(function(){
+//            prettyPrint();
+            addEventListener('load', function (event) {  }, false);
+        });
+    }(jQuery));
+
+    //
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>
