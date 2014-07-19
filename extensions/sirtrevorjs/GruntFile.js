@@ -6,13 +6,16 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-                report: 'min'
+                report: 'min',
+
+                compress:false
             },
             complete: {
                 src: [
                     '<%= bower %>underscore/underscore.js',
                     '<%= bower %>Eventable/eventable.js',
-                    'scripts//sir-trevor.js'
+                    'scripts/sir-trevor.js',
+                    'scripts/CodeBlock.js'
                 ],
                 dest: '<%= dist %>/<%= pkg.name %>-<%= pkg.version %>.min.js'
             }

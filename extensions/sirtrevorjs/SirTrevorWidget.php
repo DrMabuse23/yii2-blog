@@ -49,7 +49,7 @@ class SirTrevorWidget extends InputWidget {
     public $debug           = 'false';
     public $language        = 'en';
     public $blockOptions    = null;
-    public $blockTypes      = ["Heading","Text","List","Quote","Image","Video","Tweet","Columns"];
+    public $blockTypes      = ["Heading","Text","List","Quote","Image","Video","Tweet","Columns","Code","Gallery"];
     public $element         = '.sir-trevor';
     public $imageUploadUrl  = 'site/upload';
     public $initJs          = null;
@@ -64,7 +64,7 @@ class SirTrevorWidget extends InputWidget {
         if (is_null($this->blockOptions)) {
             $this->blockOptions = Json::encode([
                 'el'            => new JsExpression("$('{$this->element}')"),
-//                'blockTypes'    => $this->blockTypes,
+                'blockTypes'    => $this->blockTypes,
                 'defaultType' => false
             ]);
         }
@@ -74,7 +74,7 @@ class SirTrevorWidget extends InputWidget {
             $this->initJs .= 'SirTrevor.LANGUAGE = "' . $this->language . '";'.PHP_EOL;
             $this->initJs .= 'SirTrevor.setDefaults({ uploadUrl: "' . $this->imageUploadUrl . '" });'.PHP_EOL;
             $this->initJs .= "window.editor = new SirTrevor.Editor(" . $this->blockOptions . ");".PHP_EOL;
-            $this->initJs .= "$('#save').on('click', function() {SirTrevor.getInstance().store('save');});".PHP_EOL;
+            $this->initJs .= "$('.button-primary').on('click', function() {SirTrevor.getInstance().store('save');});".PHP_EOL;
         }
 
         $this->options['class'] = str_replace('.','',$this->element);

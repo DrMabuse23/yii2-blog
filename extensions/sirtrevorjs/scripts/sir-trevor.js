@@ -266,6 +266,12 @@
                 columns: {
                     'title': "Columns"
                 },
+                code: {
+                    'title': "Code"
+                },
+                gallery: {
+                    'title': "Gallery"
+                },
                 list: {
                     'title': "List"
                 },
