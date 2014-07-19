@@ -104,12 +104,7 @@ class RelationProvider extends \schmunk42\giiant\base\Provider
             case 'default_html':
             case 'default_content':
                 return
-" \$form->field(\$model, '".$attribute."')->widget(\\dosamigos\\ckeditor\\CKEditor::className(), [
-    'options' => [
-        'rows' => 6,
-    ],
-    'preset' => 'full'
-]) ";
+" \$form->field(\$model, '".$attribute."')->widget(\\drmabuse\\blog\\extensions\\sirtrevorjs\\SirTrevorWidget::className()) ";
             case 'default_technical_data_json':
                 $code = $this->DataJsonWidget();
                 return $code;
