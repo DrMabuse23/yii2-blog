@@ -69,9 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
         
 			'id',
 			'default_title',
-			'slug',
 			'rank',
-			'seo_id',
             [
                 'class' => 'common\helpers\ActionColumn',
                 'contentOptions' => ['nowrap'=>'nowrap']

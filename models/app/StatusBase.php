@@ -56,6 +56,6 @@ class StatusBase extends \common\models\ActiveRecord
      */
     public function getPosts()
     {
-        return $this->hasMany(Post::className(), ['status' => 'id']);
+        return $this->hasMany(Post::className(), ['status_id' => 'id']);
     }
 }

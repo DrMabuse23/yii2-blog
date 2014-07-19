@@ -75,7 +75,21 @@ $this->params['breadcrumbs'][] = 'View';
         ) ?>
 </p><div class='clearfix'></div>
 <?php Pjax::begin(['id'=>'pjax-Categories','linkSelector'=>'#pjax-Categories ul.pagination a']) ?>
-<?= ?>
+<?= \yii\grid\GridView::widget([
+    'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getCategories(), 'pagination' => ['pageSize' => 10]]),
+    'columns' => [			'id',
+			'default_title',
+			'rank',
+[
+    'class'      => 'yii\grid\ActionColumn',
+    'template'   => '{view} {update}',
+    'contentOptions' => ['nowrap'=>'nowrap'],
+    'buttons'    => [
+        
+    ],
+    'controller' => 'crud/category'
+],]
+]);?>
 <?php Pjax::end() ?>
 <?php $this->endBlock() ?>
 
@@ -94,7 +108,51 @@ $this->params['breadcrumbs'][] = 'View';
         ) ?>
 </p><div class='clearfix'></div>
 <?php Pjax::begin(['id'=>'pjax-Posts','linkSelector'=>'#pjax-Posts ul.pagination a']) ?>
-<?= ?>
+<?= \yii\grid\GridView::widget([
+    'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getPosts(), 'pagination' => ['pageSize' => 10]]),
+    'columns' => [			'id',
+			'default_title',
+[
+            "class" => yii\grid\DataColumn::className(),
+            "attribute" => "status_id",
+            "value" => function($model){
+
+                if($model->getRelation("comments")){
+                    if(!$model->status_id == null){
+                        return $model->getStatus()->one()->name;
+                    }
+                }
+            },
+            "format" => "raw",
+            "filter" => yii\helpers\ArrayHelper::map(
+                drmabuse\blog\models\app\Status::find()->where(["type" => "PostStatus"])->orderby("position ASC")->all(),'id','name'
+            )
+        ],
+[
+            "class" => yii\grid\DataColumn::className(),
+            "attribute" => "author_id",
+            "value" => function($model){
+                $rel = $model->getAuthor()->one();
+
+                return !is_null($rel)
+                    ?yii\helpers\Html::a($rel->name,["/blog/crud/author/view","id" => $rel->id])
+                    :"n-a";
+            },
+            "format" => "raw",
+            "filter" => yii\helpers\ArrayHelper::map(
+                drmabuse\blog\models\app\Author::find()->all(),'id','name'
+            )
+        ],
+[
+    'class'      => 'yii\grid\ActionColumn',
+    'template'   => '{view} {update}',
+    'contentOptions' => ['nowrap'=>'nowrap'],
+    'buttons'    => [
+        
+    ],
+    'controller' => 'crud/post'
+],]
+]);?>
 <?php Pjax::end() ?>
 <?php $this->endBlock() ?>
 

@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
 
 		<?= $form->field($model, 'content') ?>
 
-		<?= $form->field($model, 'status') ?>
+		<?= $form->field($model, 'publish_status') ?>
 
 		<?= $form->field($model, 'create_time') ?>
 

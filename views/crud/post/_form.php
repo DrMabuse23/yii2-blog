@@ -20,6 +20,17 @@ use yii\bootstrap\ActiveForm;
             
 			<?= $form->field($model, 'default_title')->textInput(['maxlength' => 128]) ?>
 			<?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
+			<?=         $form->field($model, 'status_id')->dropDownList(
+            \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\Status::find()->all(),'id','name'),
+            ['prompt'=>'Choose...']    // relation provider
+        )->label(
+            Html::activeLabel($model, 'status_id', []).' '.
+            Html::a(
+                '<span class="glyphicon glyphicon-plus-sign"></span>',
+                ['crud/status/create'],
+                ['target'=>'_blank']
+            )
+        ); ?>
 			<?=         $form->field($model, 'author_id')->dropDownList(
             \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\Author::find()->all(),'id','name'),
             ['prompt'=>'Choose...']    // relation provider
@@ -43,17 +54,6 @@ use yii\bootstrap\ActiveForm;
             )
         ); ?>
 			<?= $form->field($model, 'tags')->textarea(['rows' => 6]) ?>
-			<?=         $form->field($model, 'status')->dropDownList(
-            \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\Status::find()->all(),'id','name'),
-            ['prompt'=>'Choose...']    // relation provider
-        )->label(
-            Html::activeLabel($model, 'status', []).' '.
-            Html::a(
-                '<span class="glyphicon glyphicon-plus-sign"></span>',
-                ['crud/status/create'],
-                ['target'=>'_blank']
-            )
-        ); ?>
 			<?= $form->field($model, 'readmore_length')->textInput() ?>
 			<?= "" ?>
 			<?= "" ?>

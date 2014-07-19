@@ -19,7 +19,6 @@ use yii\bootstrap\ActiveForm;
         <p>
             
 			<?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
-			<?= $form->field($model, 'status')->textInput() ?>
 			<?=         $form->field($model, 'post_id')->dropDownList(
             \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\Post::find()->all(),'id','default_title'),
             ['prompt'=>'Choose...']    // relation provider
@@ -31,6 +30,7 @@ use yii\bootstrap\ActiveForm;
                 ['target'=>'_blank']
             )
         ); ?>
+			<?= $form->field($model, 'publish_status')->textInput() ?>
 			<?= $form->field($model, 'create_time')->textInput() ?>
 			<?= "" ?>
 			<?= "" ?>

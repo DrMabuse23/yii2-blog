@@ -18,7 +18,12 @@ use yii\bootstrap\ActiveForm;
         <?php $this->beginBlock('main'); ?>
         <p>
             
-			<?= "" ?>
+			<?=  $form->field($model, 'default_html')->widget(\dosamigos\ckeditor\CKEditor::className(), [
+    'options' => [
+        'rows' => 6,
+    ],
+    'preset' => 'full'
+])  ?>
 			<?=         $form->field($model, 'post_id')->dropDownList(
             \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\Post::find()->all(),'id','default_title'),
             ['prompt'=>'Choose...']    // relation provider

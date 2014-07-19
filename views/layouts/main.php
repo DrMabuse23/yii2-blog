@@ -24,13 +24,15 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div class="wrap">
     <?php
-    NavBar::begin([
-                      'brandLabel' => 'My Company',
-                      'brandUrl' => Yii::$app->homeUrl,
-                      'options' => [
-                          'class' => 'navbar-inverse navbar-fixed-top',
-                      ],
-                  ]);
+    NavBar::begin(
+        [
+            'brandLabel' => 'My Company',
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar-inverse navbar-fixed-top',
+            ],
+        ]
+    );
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
     ];
@@ -43,43 +45,47 @@ AppAsset::register($this);
             'linkOptions' => ['data-method' => 'post']
         ];
         $menuItems[] = [
-                'label' => 'Blog',
-                'items' => [
-                    [
-                        'label' => 'Category',
-                        'url' => \yii\helpers\Url::to(['crud/category'])
-                    ],
-                    [
-                        'label' => 'Post',
-                        'url' => \yii\helpers\Url::to(['crud/post'])
-                    ],
-                    [
-                        'label' => 'Post-Content',
-                        'url' => \yii\helpers\Url::to(['crud/post-content'])
-                    ],
-                    [
-                        'label' => 'Seo',
-                        'url' => \yii\helpers\Url::to(['crud/seo'])
-                    ],
-                    [
-                        'label' => 'Comment',
-                        'url' => \yii\helpers\Url::to(['crud/comment'])
-                    ],
+            'label' => 'Blog',
+            'items' => [
+                [
+                    'label' => 'Category',
+                    'url' => \yii\helpers\Url::to(['crud/category'])
+                ],
+                [
+                    'label' => 'Post',
+                    'url' => \yii\helpers\Url::to(['crud/post'])
+                ],
+                [
+                    'label' => 'Post-Content',
+                    'url' => \yii\helpers\Url::to(['crud/post-content'])
+                ],
+                [
+                    'label' => 'Seo',
+                    'url' => \yii\helpers\Url::to(['crud/seo'])
+                ],
+                [
+                    'label' => 'Comment',
+                    'url' => \yii\helpers\Url::to(['crud/comment'])
+                ],
 
-                ]
+            ]
         ];
     }
-    echo Nav::widget([
-                         'options' => ['class' => 'navbar-nav navbar-right'],
-                         'items' => $menuItems,
-                     ]);
+    echo Nav::widget(
+        [
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => $menuItems,
+        ]
+    );
     NavBar::end();
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-                                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                                ]) ?>
+        <?= Breadcrumbs::widget(
+            [
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]
+        ) ?>
         <?= $content ?>
     </div>
 </div>
@@ -87,6 +93,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>

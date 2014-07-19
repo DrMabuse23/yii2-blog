@@ -25,15 +25,15 @@ use yii\widgets\ActiveForm;
 
 		<?= $form->field($model, 'tags') ?>
 
-		<?= $form->field($model, 'status') ?>
-
-		<?php // echo $form->field($model, 'css_class') ?>
-
-		<?php // echo $form->field($model, 'readmore_length') ?>
+		<?= $form->field($model, 'status_id') ?>
 
 		<?php // echo $form->field($model, 'author_id') ?>
 
 		<?php // echo $form->field($model, 'seo_id') ?>
+
+		<?php // echo $form->field($model, 'readmore_length') ?>
+
+		<?php // echo $form->field($model, 'css_class') ?>
 
 		<?php // echo $form->field($model, 'created_at') ?>
 

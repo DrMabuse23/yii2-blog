@@ -67,7 +67,7 @@ class BlogBatchController extends Controller{
         // works nice with IDE autocompleteion
         $providers = [
             \schmunk42\giiant\crud\providers\CallbackProvider::className(),
-            \common\components\RelationProvider::className(),
+            \drmabuse\blog\components\RelationProvider::className(),
             \schmunk42\giiant\crud\providers\RelationProvider::className(),
             \schmunk42\giiant\crud\providers\EditorProvider::className(),
             \schmunk42\giiant\crud\providers\SelectProvider::className(),

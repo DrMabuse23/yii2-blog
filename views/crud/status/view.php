@@ -68,12 +68,40 @@ $this->params['breadcrumbs'][] = 'View';
         ) ?>
   <?= \yii\helpers\Html::a(
             '<span class="glyphicon glyphicon-plus"></span> New Post',
-            ['crud/post/create', 'Post'=>['status'=>$model->id]],
+            ['crud/post/create', 'Post'=>['status_id'=>$model->id]],
             ['class'=>'btn btn-success btn-xs']
         ) ?>
 </p><div class='clearfix'></div>
 <?php Pjax::begin(['id'=>'pjax-Posts','linkSelector'=>'#pjax-Posts ul.pagination a']) ?>
-<?= ?>
+<?= \yii\grid\GridView::widget([
+    'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getPosts(), 'pagination' => ['pageSize' => 10]]),
+    'columns' => [			'id',
+			'default_title',
+[
+            "class" => yii\grid\DataColumn::className(),
+            "attribute" => "author_id",
+            "value" => function($model){
+                $rel = $model->getAuthor()->one();
+
+                return !is_null($rel)
+                    ?yii\helpers\Html::a($rel->name,["/blog/crud/author/view","id" => $rel->id])
+                    :"n-a";
+            },
+            "format" => "raw",
+            "filter" => yii\helpers\ArrayHelper::map(
+                drmabuse\blog\models\app\Author::find()->all(),'id','name'
+            )
+        ],
+[
+    'class'      => 'yii\grid\ActionColumn',
+    'template'   => '{view} {update}',
+    'contentOptions' => ['nowrap'=>'nowrap'],
+    'buttons'    => [
+        
+    ],
+    'controller' => 'crud/post'
+],]
+]);?>
 <?php Pjax::end() ?>
 <?php $this->endBlock() ?>
 

@@ -15,18 +15,18 @@ class PostSearch extends Model
 	public $default_title;
 	public $slug;
 	public $tags;
-	public $status;
-	public $css_class;
-	public $readmore_length;
+	public $status_id;
 	public $author_id;
 	public $seo_id;
+	public $readmore_length;
+	public $css_class;
 	public $created_at;
 	public $updated_at;
 
 	public function rules()
 	{
 		return [
-			[['id', 'status', 'readmore_length', 'author_id', 'seo_id'], 'integer'],
+			[['id', 'status_id', 'author_id', 'seo_id', 'readmore_length'], 'integer'],
 			[['default_title', 'slug', 'tags', 'css_class', 'created_at', 'updated_at'], 'safe'],
 		];
 	}
@@ -41,11 +41,11 @@ class PostSearch extends Model
 			'default_title' => 'Default Title',
 			'slug' => 'Slug',
 			'tags' => 'Tags',
-			'status' => 'Status',
-			'css_class' => 'Css Class',
-			'readmore_length' => 'Readmore Length',
+			'status_id' => 'Status ID',
 			'author_id' => 'Author ID',
 			'seo_id' => 'Seo ID',
+			'readmore_length' => 'Readmore Length',
+			'css_class' => 'Css Class',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		];
@@ -64,10 +64,10 @@ class PostSearch extends Model
 
 		$query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
-            'readmore_length' => $this->readmore_length,
+            'status_id' => $this->status_id,
             'author_id' => $this->author_id,
             'seo_id' => $this->seo_id,
+            'readmore_length' => $this->readmore_length,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

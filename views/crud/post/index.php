@@ -45,12 +45,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ],
     [
-        'label' => '<i class="glyphicon glyphicon-arrow-left"> Status</i>',
-        'url' => [
-            'crud/status/index',
-        ],
-    ],
-    [
         'label' => '<i class="glyphicon glyphicon-arrow-left"> Author</i>',
         'url' => [
             'crud/author/index',
@@ -60,6 +54,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'label' => '<i class="glyphicon glyphicon-arrow-left"> Seo</i>',
         'url' => [
             'crud/seo/index',
+        ],
+    ],
+    [
+        'label' => '<i class="glyphicon glyphicon-arrow-left"> Status</i>',
+        'url' => [
+            'crud/status/index',
         ],
     ],
     [
@@ -93,13 +93,37 @@ $this->params['breadcrumbs'][] = $this->title;
         
 			'id',
 			'default_title',
-			'slug',
-			'tags:ntext',
-			'status',
-			'css_class',
-			'readmore_length',
-			/*'author_id'*/
-			/*'seo_id'*/
+			[
+            "class" => yii\grid\DataColumn::className(),
+            "attribute" => "status_id",
+            "value" => function($model){
+
+                if($model->getRelation("comments")){
+                    if(!$model->status_id == null){
+                        return $model->getStatus()->one()->name;
+                    }
+                }
+            },
+            "format" => "raw",
+            "filter" => yii\helpers\ArrayHelper::map(
+                drmabuse\blog\models\app\Status::find()->where(["type" => "PostStatus"])->orderby("position ASC")->all(),'id','name'
+            )
+        ],
+			[
+            "class" => yii\grid\DataColumn::className(),
+            "attribute" => "author_id",
+            "value" => function($model){
+                $rel = $model->getAuthor()->one();
+
+                return !is_null($rel)
+                    ?yii\helpers\Html::a($rel->name,["/blog/crud/author/view","id" => $rel->id])
+                    :"n-a";
+            },
+            "format" => "raw",
+            "filter" => yii\helpers\ArrayHelper::map(
+                drmabuse\blog\models\app\Author::find()->all(),'id','name'
+            )
+        ],
             [
                 'class' => 'common\helpers\ActionColumn',
                 'contentOptions' => ['nowrap'=>'nowrap']

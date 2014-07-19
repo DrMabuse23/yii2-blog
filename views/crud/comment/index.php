@@ -56,14 +56,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
         
 			'id',
-			'status',
+			"content:html",
+			'publish_status',
 			'create_time:datetime',
 			[
             "class" => yii\grid\DataColumn::className(),
             "attribute" => "post_id",
             "value" => function($model){
                 $rel = $model->getPost()->one();
-                return yii\helpers\Html::a($rel->default_title,["/crud/post/view","id" => $rel->id]);
+
+                return !is_null($rel)
+                    ?yii\helpers\Html::a($rel->default_title,["/blog/crud/post/view","id" => $rel->id])
+                    :"n-a";
             },
             "format" => "raw",
             "filter" => yii\helpers\ArrayHelper::map(

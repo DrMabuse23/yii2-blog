@@ -11,18 +11,18 @@ use Yii;
  * @property string $default_title
  * @property string $slug
  * @property string $tags
- * @property integer $status
- * @property string $css_class
- * @property integer $readmore_length
+ * @property integer $status_id
  * @property integer $author_id
  * @property integer $seo_id
+ * @property integer $readmore_length
+ * @property string $css_class
  * @property string $created_at
  * @property string $updated_at
  *
  * @property Comment[] $comments
- * @property Status $status0
  * @property Author $author
  * @property Seo $seo
+ * @property Status $status
  * @property PostContent[] $postContents
  * @property PostLookupCategory[] $postLookupCategories
  * @property Category[] $categories
@@ -43,9 +43,9 @@ class PostBase extends \common\models\ActiveRecord
     public function rules()
     {
         return [
-            [['default_title', 'slug', 'author_id', 'seo_id'], 'required'],
+            [['default_title', 'slug', 'status_id', 'author_id', 'seo_id'], 'required'],
             [['tags'], 'string'],
-            [['status', 'readmore_length', 'author_id', 'seo_id'], 'integer'],
+            [['status_id', 'author_id', 'seo_id', 'readmore_length'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['default_title'], 'string', 'max' => 128],
             [['slug'], 'string', 'max' => 255],
@@ -63,11 +63,11 @@ class PostBase extends \common\models\ActiveRecord
             'default_title' => 'Default Title',
             'slug' => 'Slug',
             'tags' => 'Tags',
-            'status' => 'Status',
-            'css_class' => 'Css Class',
-            'readmore_length' => 'Readmore Length',
+            'status_id' => 'Status ID',
             'author_id' => 'Author ID',
             'seo_id' => 'Seo ID',
+            'readmore_length' => 'Readmore Length',
+            'css_class' => 'Css Class',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -84,14 +84,6 @@ class PostBase extends \common\models\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getStatus0()
-    {
-        return $this->hasOne(Status::className(), ['id' => 'status']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getAuthor()
     {
         return $this->hasOne(Author::className(), ['id' => 'author_id']);
@@ -103,6 +95,14 @@ class PostBase extends \common\models\ActiveRecord
     public function getSeo()
     {
         return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStatus()
+    {
+        return $this->hasOne(Status::className(), ['id' => 'status_id']);
     }
 
     /**

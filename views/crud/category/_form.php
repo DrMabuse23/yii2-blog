@@ -32,7 +32,12 @@ use yii\bootstrap\ActiveForm;
                 ['target'=>'_blank']
             )
         ); ?>
-			<?= $form->field($model, 'default_content')->textarea(['rows' => 6]) ?>
+			<?=  $form->field($model, 'default_content')->widget(\dosamigos\ckeditor\CKEditor::className(), [
+    'options' => [
+        'rows' => 6,
+    ],
+    'preset' => 'full'
+])  ?>
 			<?= "" ?>
 			<?= "" ?>
         </p>

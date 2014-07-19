@@ -66,7 +66,10 @@ $this->params['breadcrumbs'][] = $this->title;
             "attribute" => "category_id",
             "value" => function($model){
                 $rel = $model->getCategory()->one();
-                return yii\helpers\Html::a($rel->default_title,["/crud/category/view","id" => $rel->id]);
+
+                return !is_null($rel)
+                    ?yii\helpers\Html::a($rel->default_title,["/blog/crud/category/view","id" => $rel->id])
+                    :"n-a";
             },
             "format" => "raw",
             "filter" => yii\helpers\ArrayHelper::map(
@@ -78,7 +81,10 @@ $this->params['breadcrumbs'][] = $this->title;
             "attribute" => "post_id",
             "value" => function($model){
                 $rel = $model->getPost()->one();
-                return yii\helpers\Html::a($rel->default_title,["/crud/post/view","id" => $rel->id]);
+
+                return !is_null($rel)
+                    ?yii\helpers\Html::a($rel->default_title,["/blog/crud/post/view","id" => $rel->id])
+                    :"n-a";
             },
             "format" => "raw",
             "filter" => yii\helpers\ArrayHelper::map(

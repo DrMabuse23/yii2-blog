@@ -57,7 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
         
 			'id',
 			'name',
-			'slug',
             [
                 'class' => 'common\helpers\ActionColumn',
                 'contentOptions' => ['nowrap'=>'nowrap']

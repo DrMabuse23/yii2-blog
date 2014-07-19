@@ -13,7 +13,7 @@ class CommentSearch extends Model
 {
 	public $id;
 	public $content;
-	public $status;
+	public $publish_status;
 	public $create_time;
 	public $author;
 	public $email;
@@ -25,7 +25,7 @@ class CommentSearch extends Model
 	public function rules()
 	{
 		return [
-			[['id', 'status', 'create_time', 'post_id'], 'integer'],
+			[['id', 'publish_status', 'create_time', 'post_id'], 'integer'],
 			[['content', 'author', 'email', 'url', 'created_at', 'updated_at'], 'safe'],
 		];
 	}
@@ -38,7 +38,7 @@ class CommentSearch extends Model
 		return [
 			'id' => 'ID',
 			'content' => 'Content',
-			'status' => 'Status',
+			'publish_status' => 'Publish Status',
 			'create_time' => 'Create Time',
 			'author' => 'Author',
 			'email' => 'Email',
@@ -62,7 +62,7 @@ class CommentSearch extends Model
 
 		$query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
+            'publish_status' => $this->publish_status,
             'create_time' => $this->create_time,
             'post_id' => $this->post_id,
             'created_at' => $this->created_at,
