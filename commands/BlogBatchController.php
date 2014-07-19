@@ -18,7 +18,6 @@ use yii\console\Controller;
  * @author $Author
  */
 class BlogBatchController extends Controller{
-
     /**
      * @var bool whether to generate and overwrite all files
      */
@@ -49,6 +48,8 @@ class BlogBatchController extends Controller{
     {
         echo "Running batch...\n";
 
+        \Yii::setAlias('schmunk42/sakila', '@vendor/schmunk42/yii2-sakila-module');
+
         $baseNamespace = 'drmabuse\\blog\\';
         $tablePrefix   = 'blog_';
 
@@ -64,6 +65,7 @@ class BlogBatchController extends Controller{
             'blog_comment',
         ];
 
+        // works nice with IDE autocompleteion
         // works nice with IDE autocompleteion
         $providers = [
             \schmunk42\giiant\crud\providers\CallbackProvider::className(),
@@ -93,18 +95,20 @@ class BlogBatchController extends Controller{
         foreach ($tables AS $table) {
             # TODO fix prefix
             $table  = str_replace($tablePrefix, '', $table);
+            $modelClass = $baseNamespace . 'models\\app\\' . Inflector::camelize($table);
             $params = [
                 'generate'         => $this->generate,
                 'template'         => 'default',
                 'tablePrefix'        => $tablePrefix,
-                #'moduleID'         => 'console-sakila',
-                'modelClass'       => $baseNamespace . 'models\\app\\' . Inflector::camelize($table),
-                'searchModelClass' => $baseNamespace . 'models\\app\\' . Inflector::camelize($table) . 'Search',
-                'controllerClass'  => 'drmabuse\\blog\\controllers\\crud\\' . Inflector::camelize($table) . 'Controller',
+                //                'moduleID'         => 'console-sakila',
+                'modelClass'       => $modelClass,
+                'searchModelClass' => $modelClass . 'Search',
+                'controllerClass'  => $baseNamespace . 'controllers\\crud\\' . Inflector::camelize($table). 'Controller',
                 'providerList'     => implode(',', $providers),
                 'viewPath'         => '@vendor/drmabuse/yii2-blog/views/crud',
                 'pathPrefix'       => 'crud/',
-                # TODO: review class (t.munk) --- 'actionButtonClass' => 'common\\helpers\\ActionColumn'
+                'actionButtonClass' => 'common\\helpers\\ActionColumn'
+                # TODO: review class (t.munk) ---
             ];
             $route  = 'giic/giiant-crud';
             #$route  = 'giic/crud';
