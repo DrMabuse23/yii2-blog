@@ -9,6 +9,7 @@
 
 namespace drmabuse\blog\commands;
 
+
 use yii\console\Controller;
 
 /**
@@ -48,10 +49,8 @@ class BlogBatchController extends Controller{
     {
         echo "Running batch...\n";
 
-        \Yii::setAlias('schmunk42/sakila', '@vendor/schmunk42/yii2-sakila-module');
-
         $baseNamespace = 'drmabuse\\blog\\';
-        $tablePrefix   = '';
+        $tablePrefix   = 'blog_';
 
         $tables = [
             'blog_seo',
@@ -67,13 +66,13 @@ class BlogBatchController extends Controller{
 
         // works nice with IDE autocompleteion
         $providers = [
-            CallbackProvider::className(),
+            \schmunk42\giiant\crud\providers\CallbackProvider::className(),
             \common\components\RelationProvider::className(),
-            //            RelationProvider::className(),
-            EditorProvider::className(),
-            SelectProvider::className(),
-            DateTimeProvider::className(),
-            RangeProvider::className(),
+            \schmunk42\giiant\crud\providers\RelationProvider::className(),
+            \schmunk42\giiant\crud\providers\EditorProvider::className(),
+            \schmunk42\giiant\crud\providers\SelectProvider::className(),
+            \schmunk42\giiant\crud\providers\DateTimeProvider::className(),
+            \schmunk42\giiant\crud\providers\RangeProvider::className(),
         ];
         foreach ($tables AS $table) {
             $params = [
