@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="pull-right">
 
 
-                                                                                                            
+                                                                                                                                        
             <?php             echo \yii\bootstrap\ButtonDropdown::widget(
                 [
                     'id'       => 'giiant-relations',
@@ -38,6 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         'encodeLabels' => false,
                         'items'        => [
+    [
+        'label' => '<i class="glyphicon glyphicon-arrow-right"> Post</i>',
+        'url' => [
+            'crud/post/index',
+        ],
+    ],
     [
         'label' => '<i class="glyphicon glyphicon-arrow-left"> Seo</i>',
         'url' => [

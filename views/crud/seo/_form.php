@@ -22,8 +22,6 @@ use yii\bootstrap\ActiveForm;
 			<?= $form->field($model, 'default_keywords')->textarea(['rows' => 6]) ?>
 			<?= $form->field($model, 'default_description')->textarea(['rows' => 6]) ?>
 			<?= $form->field($model, 'default_meta_json')->textarea(['rows' => 6]) ?>
-			<?= "" ?>
-			<?= "" ?>
         </p>
         <?php $this->endBlock(); ?>
         

@@ -9,4 +9,10 @@ use Yii;
  */
 class Comment extends CommentBase
 {
+    public function extraFields()
+    {
+        return [
+            'post'
+        ];
+    }
 }

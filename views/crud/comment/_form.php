@@ -32,8 +32,6 @@ use yii\bootstrap\ActiveForm;
         ); ?>
 			<?= $form->field($model, 'publish_status')->textInput() ?>
 			<?= $form->field($model, 'create_time')->textInput() ?>
-			<?= "" ?>
-			<?= "" ?>
 			<?= $form->field($model, 'author')->textInput(['maxlength' => 128]) ?>
 			<?= $form->field($model, 'email')->textInput(['maxlength' => 128]) ?>
 			<?= $form->field($model, 'url')->textInput(['maxlength' => 128]) ?>

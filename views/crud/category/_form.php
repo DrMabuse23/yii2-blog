@@ -33,8 +33,6 @@ use yii\bootstrap\ActiveForm;
             )
         ); ?>
 			<?=  $form->field($model, 'default_content')->widget(\drmabuse\blog\extensions\sirtrevorjs\SirTrevorWidget::className())  ?>
-			<?= "" ?>
-			<?= "" ?>
         </p>
         <?php $this->endBlock(); ?>
         

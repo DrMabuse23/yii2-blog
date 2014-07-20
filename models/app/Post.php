@@ -9,4 +9,17 @@ use Yii;
  */
 class Post extends PostBase
 {
+    public function extraFields()
+    {
+        return [
+            'seo',
+            'status',
+            'categories',
+            'postContents',
+            'comments',
+            'author',
+        ];
+    }
+
+
 }

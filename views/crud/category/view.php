@@ -67,6 +67,75 @@ $this->params['breadcrumbs'][] = 'View';
 
 
     
+<?php $this->beginBlock('PublishPosts'); ?>
+<p class='pull-right'>
+  <?= \yii\helpers\Html::a(
+            '<span class="glyphicon glyphicon-list"></span> List All Publish Posts',
+            ['crud/post/index'],
+            ['class'=>'btn text-muted btn-xs']
+        ) ?>
+  <?= \yii\helpers\Html::a(
+            '<span class="glyphicon glyphicon-plus"></span> New Publish Post',
+            ['crud/post/create', 'PublishPost'=>['id'=>$model->id]],
+            ['class'=>'btn btn-success btn-xs']
+        ) ?>
+  <?= \yii\helpers\Html::a(
+            '<span class="glyphicon glyphicon-link"></span> Attach Publish Post', ['crud/post-lookup-category/create', 'PostLookupCategory'=>['category_id'=>$model->id]],
+            ['class'=>'btn btn-info btn-xs']
+        ) ?>
+</p><div class='clearfix'></div>
+<?php Pjax::begin(['id'=>'pjax-PublishPosts','linkSelector'=>'#pjax-PublishPosts ul.pagination a']) ?>
+<?= \yii\grid\GridView::widget([
+    'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getPostLookupCategories(), 'pagination' => ['pageSize' => 10]]),
+    'columns' => [[
+            "class" => yii\grid\DataColumn::className(),
+            "attribute" => "post_id",
+            "value" => function($model){
+                $rel = $model->getPost()->one();
+
+                return !is_null($rel)
+                    ?yii\helpers\Html::a($rel->default_title,["/blog/crud/post/view","id" => $rel->id])
+                    :"n-a";
+            },
+            "format" => "raw",
+            "filter" => yii\helpers\ArrayHelper::map(
+                drmabuse\blog\models\app\Post::find()->all(),'id','default_title'
+            )
+        ],
+[
+    'class'      => 'yii\grid\ActionColumn',
+    'template'   => '{view} {delete}',
+    'contentOptions' => ['nowrap'=>'nowrap'],
+    'buttons'    => [
+        'delete' => function ($url, $model) {
+                return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, [
+                    'class' => 'text-danger',
+                    'title' => Yii::t('yii', 'Remove'),
+                    'data-confirm' => Yii::t('yii', 'Are you sure you want to delete the related item?'),
+                    'data-method' => 'post',
+                    'data-pjax' => '0',
+                ]);
+            },
+'view' => function ($url, $model) {
+                return Html::a(
+                    '<span class="glyphicon glyphicon-cog"></span>',
+                    $url,
+                    [
+                        'data-title'  => Yii::t('yii', 'View Pivot Record'),
+                        'data-toggle' => 'tooltip',
+                        'data-pjax'   => '0',
+                        'class'        => 'text-muted'
+                    ]
+                );
+            },
+    ],
+    'controller' => 'crud/post-lookup-category'
+],]
+]);?>
+<?php Pjax::end() ?>
+<?php $this->endBlock() ?>
+
+
 <?php $this->beginBlock('Posts'); ?>
 <p class='pull-right'>
   <?= \yii\helpers\Html::a(
@@ -145,6 +214,10 @@ $this->params['breadcrumbs'][] = 'View';
     'label'   => '<span class="glyphicon glyphicon-asterisk"></span> Category',
     'content' => $this->blocks['drmabuse\blog\models\app\Category'],
     'active'  => true,
+],[
+    'label'   => '<small><span class="glyphicon glyphicon-paperclip"></span> Publish Posts</small>',
+    'content' => $this->blocks['PublishPosts'],
+    'active'  => false,
 ],[
     'label'   => '<small><span class="glyphicon glyphicon-paperclip"></span> Posts</small>',
     'content' => $this->blocks['Posts'],

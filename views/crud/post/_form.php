@@ -55,8 +55,6 @@ use yii\bootstrap\ActiveForm;
         ); ?>
 			<?= $form->field($model, 'tags')->textarea(['rows' => 6]) ?>
 			<?= $form->field($model, 'readmore_length')->textInput() ?>
-			<?= "" ?>
-			<?= "" ?>
 			<?= $form->field($model, 'css_class')->textInput(['maxlength' => 5]) ?>
         </p>
         <?php $this->endBlock(); ?>

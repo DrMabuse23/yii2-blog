@@ -12,7 +12,7 @@ use yii\bootstrap\ActiveForm;
 
 <div class="post-content-form">
 
-    <?php $form = ActiveForm::begin(['layout' => 'horizontal', 'enableClientValidation' => false]); ?>
+    <?php $form = ActiveForm::begin(['enableClientValidation' => false]); ?>
 
     <div class="">
         <?php $this->beginBlock('main'); ?>
@@ -31,8 +31,6 @@ use yii\bootstrap\ActiveForm;
             )
         ); ?>
 			<?= $form->field($model, 'rank')->textInput() ?>
-			<?= "" ?>
-			<?= "" ?>
 			<?= $form->field($model, 'default_title')->textInput(['maxlength' => 255]) ?>
         </p>
         <?php $this->endBlock(); ?>

@@ -57,7 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
         
 			'id',
 			'default_title',
-			"default_html:html",
 			[
             "class" => yii\grid\DataColumn::className(),
             "attribute" => "post_id",

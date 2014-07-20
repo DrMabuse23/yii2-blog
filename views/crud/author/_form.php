@@ -20,8 +20,6 @@ use yii\bootstrap\ActiveForm;
             
 			<?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 			<?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
-			<?= "" ?>
-			<?= "" ?>
         </p>
         <?php $this->endBlock(); ?>
         

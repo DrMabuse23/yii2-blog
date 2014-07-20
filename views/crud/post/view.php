@@ -132,7 +132,6 @@ $this->params['breadcrumbs'][] = 'View';
     'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getPostContents(), 'pagination' => ['pageSize' => 10]]),
     'columns' => [			'id',
 			'default_title',
-"default_html:html",
 			'rank',
 [
     'class'      => 'yii\grid\ActionColumn',
