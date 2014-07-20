@@ -18,20 +18,9 @@ use yii\helpers\VarDumper;
     [
         'attributeFormats' => [
             'default_html' => function ($column, $model) {
-                return "['format'=>'html','attribute'=>'default_lead_html',]";
+                return "['format'=>'html','attribute'=>'default_html',]";
             }
         ],
-        'activeFields' => [
-            'spindle_speed_minss' => function () {
-                $code = <<<EOS
-\$form->field(\$model, 'spindle_speed_min', [
-    'inputTemplate' => '<div class="input-group col-xs-6">{input}<span class="input-group-addon">U/min</span></div>',
-    ]
-);
-EOS;
-                return $code;
-            }
-        ]
     ]
 );
 

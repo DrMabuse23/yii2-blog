@@ -4,7 +4,7 @@ namespace drmabuse\blog\controllers\crud;
 
 use drmabuse\blog\models\app\PostContent;
 use drmabuse\blog\models\app\PostContentSearch;
-use yii\web\Controller;
+use drmabuse\blog\components\BlogController;
 use yii\web\HttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -13,7 +13,7 @@ use yii\helpers\Url;
 /**
  * PostContentController implements the CRUD actions for PostContent model.
  */
-class PostContentController extends Controller
+class PostContentController extends BlogController
 {
 	public function behaviors()
 	{
@@ -22,6 +22,8 @@ class PostContentController extends Controller
 				'class' => VerbFilter::className(),
 				'actions' => [
 					'delete' => ['post'],
+					'rest-id' => ['post'],
+					//'rest-search' => ['post'],
 				],
 			],
             'access' => [
@@ -33,10 +35,17 @@ class PostContentController extends Controller
                             'create',
                             'update',
                             'delete',
-                            'view'
+                            'view',
                         ],
                         'allow'   => true,
                         'roles'   => ['@'],
+                    ],
+                    [
+                        'actions' => [
+                            'rest-id',
+                            'rest-search',
+                        ],
+                        'allow'   => true,
                     ],
                 ],
             ]
@@ -139,4 +148,27 @@ class PostContentController extends Controller
 			throw new HttpException(404, 'The requested page does not exist.');
 		}
 	}
+
+    /**
+    * Return the attributes from model as JSOn
+    * @param $id
+    * @return string
+    */
+    public function actionRestId($id,$where = null){
+        $model = $this->findModel($id);
+        return Json::encode($model->attributes);
+    }
+
+    /**
+    * Return all Model item in Json
+    * @param $id
+    * @return string
+    */
+    public function actionRestSearch($with = [],$where = []){
+        $models = PostContent::find()->with($with)->where($where)->all();
+        foreach($models as $model){
+            $temp[] = $model->attributes;
+        }
+        echo \yii\helpers\Json::encode($temp);
+    }
 }

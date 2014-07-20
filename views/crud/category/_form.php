@@ -32,12 +32,7 @@ use yii\bootstrap\ActiveForm;
                 ['target'=>'_blank']
             )
         ); ?>
-			<?=  $form->field($model, 'default_content')->widget(\dosamigos\ckeditor\CKEditor::className(), [
-    'options' => [
-        'rows' => 6,
-    ],
-    'preset' => 'full'
-])  ?>
+			<?=  $form->field($model, 'default_content')->widget(\drmabuse\blog\extensions\sirtrevorjs\SirTrevorWidget::className())  ?>
 			<?= "" ?>
 			<?= "" ?>
         </p>

@@ -9,6 +9,7 @@
 
 namespace drmabuse\blog\components;
 
+use yii\helpers\Json;
 use yii\web\Controller;
 
 
@@ -20,4 +21,4 @@ use yii\web\Controller;
 class BlogController extends  Controller{
 
     public $layout = 'main';
-} 
+}
