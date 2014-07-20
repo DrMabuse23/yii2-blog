@@ -50,7 +50,7 @@ class SirTrevorWidget extends InputWidget {
     public $debug           = 'false';
     public $language        = 'en';
     public $blockOptions    = null;
-    public $blockTypes      = ["Heading","Text","List","Quote","Image","Video","Tweet","Columns","Code","Gallery"];
+    public $blockTypes      = ["Heading","Text","List","Quote","Image","Video","Tweet","Columns","Code","Gallery","ImageCaption"];
     public $element         = '.sir-trevor';
     public $imageUploadUrl  = null;
     public $initJs          = null;
