@@ -4,16 +4,18 @@ namespace drmabuse\blog\controllers\crud;
 
 use drmabuse\blog\models\app\Category;
 use drmabuse\blog\models\app\CategorySearch;
-use drmabuse\blog\components\BlogController;
+use yii\web\Controller;
 use yii\web\HttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
+use yii\web\Response;
+use yii\helpers\Json;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
-class CategoryController extends BlogController
+class CategoryController extends Controller
 {
 	public function behaviors()
 	{
@@ -23,7 +25,7 @@ class CategoryController extends BlogController
 				'actions' => [
 					'delete' => ['post'],
 					'rest-id' => ['post'],
-					//'rest-search' => ['post'],
+					'rest-search' => ['post'],
 				],
 			],
             'access' => [
@@ -148,27 +150,4 @@ class CategoryController extends BlogController
 			throw new HttpException(404, 'The requested page does not exist.');
 		}
 	}
-
-    /**
-    * Return the attributes from model as JSOn
-    * @param $id
-    * @return string
-    */
-    public function actionRestId($id,$where = null){
-        $model = $this->findModel($id);
-        return Json::encode($model->attributes);
-    }
-
-    /**
-    * Return all Model item in Json
-    * @param $id
-    * @return string
-    */
-    public function actionRestSearch($with = [],$where = []){
-        $models = Category::find()->with($with)->where($where)->all();
-        foreach($models as $model){
-            $temp[] = $model->attributes;
-        }
-        echo \yii\helpers\Json::encode($temp);
-    }
 }

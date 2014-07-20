@@ -74,3 +74,5 @@ bower_components
 # PHPSTORM
 #########
 .idea
+
+/controllers/ApiController.php

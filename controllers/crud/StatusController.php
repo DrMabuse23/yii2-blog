@@ -4,16 +4,18 @@ namespace drmabuse\blog\controllers\crud;
 
 use drmabuse\blog\models\app\Status;
 use drmabuse\blog\models\app\StatusSearch;
-use drmabuse\blog\components\BlogController;
+use yii\web\Controller;
 use yii\web\HttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
+use yii\web\Response;
+use yii\helpers\Json;
 
 /**
  * StatusController implements the CRUD actions for Status model.
  */
-class StatusController extends BlogController
+class StatusController extends Controller
 {
 	public function behaviors()
 	{
@@ -23,7 +25,7 @@ class StatusController extends BlogController
 				'actions' => [
 					'delete' => ['post'],
 					'rest-id' => ['post'],
-					//'rest-search' => ['post'],
+					'rest-search' => ['post'],
 				],
 			],
             'access' => [
@@ -148,27 +150,4 @@ class StatusController extends BlogController
 			throw new HttpException(404, 'The requested page does not exist.');
 		}
 	}
-
-    /**
-    * Return the attributes from model as JSOn
-    * @param $id
-    * @return string
-    */
-    public function actionRestId($id,$where = null){
-        $model = $this->findModel($id);
-        return Json::encode($model->attributes);
-    }
-
-    /**
-    * Return all Model item in Json
-    * @param $id
-    * @return string
-    */
-    public function actionRestSearch($with = [],$where = []){
-        $models = Status::find()->with($with)->where($where)->all();
-        foreach($models as $model){
-            $temp[] = $model->attributes;
-        }
-        echo \yii\helpers\Json::encode($temp);
-    }
 }
