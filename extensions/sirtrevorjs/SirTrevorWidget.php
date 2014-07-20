@@ -36,6 +36,7 @@ use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\JsExpression;
 use drmabuse\blog\extensions\sirtrevorjs\assets\SirTrevorCompleteAsset;
 use yii\widgets\InputWidget;
@@ -51,7 +52,7 @@ class SirTrevorWidget extends InputWidget {
     public $blockOptions    = null;
     public $blockTypes      = ["Heading","Text","List","Quote","Image","Video","Tweet","Columns","Code","Gallery"];
     public $element         = '.sir-trevor';
-    public $imageUploadUrl  = 'site/upload';
+    public $imageUploadUrl  = null;
     public $initJs          = null;
 
     public $options;
@@ -60,6 +61,9 @@ class SirTrevorWidget extends InputWidget {
 
     public function init(){
         parent::init();
+
+        if($this->imageUploadUrl === null)
+            $this->imageUploadUrl =  Url::to(['/blog/crud/post-content/upload']);
 
         if (is_null($this->blockOptions)) {
             $this->blockOptions = Json::encode([

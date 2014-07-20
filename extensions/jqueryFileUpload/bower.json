@@ -1,0 +1,7 @@
+{
+    "name": "mediating",
+    "version": "0.0.1",
+    "dependencies": {
+        "blueimp-file-upload": "9.5.6"
+    }
+}

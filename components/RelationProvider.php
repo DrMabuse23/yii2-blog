@@ -13,16 +13,16 @@ use yii\helpers\Json;
 use yii\helpers\VarDumper;
 
 
-\Yii::$container->set(
-    'schmunk42\giiant\crud\providers\CallbackProvider',
-    [
-        'attributeFormats' => [
-            'default_html' => function ($column, $model) {
-                return "['format'=>'html','attribute'=>'default_html',]";
-            }
-        ],
-    ]
-);
+//\Yii::$container->set(
+//    'schmunk42\giiant\crud\providers\CallbackProvider',
+//    [
+//        'attributeFormats' => [
+//            'default_html' => function ($column, $model) {
+//                return "['format'=>'html','attribute'=>'default_html',]";
+//            }
+//        ],
+//    ]
+//);
 
 class RelationProvider extends \schmunk42\giiant\base\Provider
 {
@@ -94,9 +94,6 @@ class RelationProvider extends \schmunk42\giiant\base\Provider
             case 'default_content':
                 return
 " \$form->field(\$model, '".$attribute."')->widget(\\drmabuse\\blog\\extensions\\sirtrevorjs\\SirTrevorWidget::className()) ";
-            case 'default_technical_data_json':
-                $code = $this->DataJsonWidget();
-                return $code;
         }
 
         if (!isset($this->generator->getTableSchema()->columns[$attribute])) {
@@ -148,10 +145,10 @@ class RelationProvider extends \schmunk42\giiant\base\Provider
             case 'css_class':
             case 'seo_id':
             case 'readmore_length':
+            case 'default_html':
             case 'tags':
                 return false;
             case 'content':
-            case 'default_html':
                 return '"' . $column->name . ':html"';
             case 'slug':
                 //                return '"'.$column->name.':url"';
@@ -201,19 +198,6 @@ class RelationProvider extends \schmunk42\giiant\base\Provider
                 ['{$route}/create'],
                 ['target'=>'_blank']
             )
-        );
-EOS;
-    }
-
-    public function DataJsonWidget()
-    {
-        return <<<EOS
-        \$form->field(\$model, 'default_technical_data_json')->widget(
-            backend\\extensions\\machineDataJson\\DataJsonWidget::className(),
-            [
-                'model'     => \$model,
-                'attribute' => 'default_technical_data_json'
-            ]
         );
 EOS;
     }

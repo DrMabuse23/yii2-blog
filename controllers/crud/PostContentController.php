@@ -2,6 +2,7 @@
 
 namespace drmabuse\blog\controllers\crud;
 
+use drmabuse\blog\controllers\crud\action\PostContentFileUpload;
 use drmabuse\blog\models\app\PostContent;
 use drmabuse\blog\models\app\PostContentSearch;
 use yii\web\Controller;
@@ -23,9 +24,7 @@ class PostContentController extends Controller
 			'verbs' => [
 				'class' => VerbFilter::className(),
 				'actions' => [
-					'delete' => ['post'],
-					'rest-id' => ['post'],
-					'rest-search' => ['post'],
+					'delete' => ['post']
 				],
 			],
             'access' => [
@@ -38,21 +37,27 @@ class PostContentController extends Controller
                             'update',
                             'delete',
                             'view',
+                            'upload'
                         ],
                         'allow'   => true,
                         'roles'   => ['@'],
-                    ],
-                    [
-                        'actions' => [
-                            'rest-id',
-                            'rest-search',
-                        ],
-                        'allow'   => true,
-                    ],
+                    ]
                 ],
             ]
 		];
 	}
+    /**
+     * add actions to controller
+     * @return array
+     */
+    public function actions()
+    {
+        return [
+            'upload' => [
+                'class' => PostContentFileUpload::className(),
+            ]
+        ];
+    }
 
 	/**
 	 * Lists all PostContent models.

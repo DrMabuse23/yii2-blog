@@ -13,19 +13,19 @@ use yii\web\AssetBundle;
 
 class SirTrevorCompleteAsset extends AssetBundle {
     public $language;
-    public $sourcePath  = '@vendor/drmabuse/yii2-blog/extensions/sirtrevorjs';
+    public $sourcePath  = '@vendor/drmabuse/yii2-blog/extensions/sirtrevorjs/dist';
     /**
      * @var array
      */
     public $css = [
-        'dist/yii2-sirtrevorjs-0.0.2.min.css',
+        'yii2-sirtrevorjs-0.0.2.min.css',
     ];
     /**
      * @var array
      */
     public $js = [
-        "dist/yii2-sirtrevorjs-0.0.2.min.js",
-        "dist/locales/de.js"
+        "yii2-sirtrevorjs-0.0.2.min.js",
+        "locales/de.js"
     ];
     /**
      * @var array
