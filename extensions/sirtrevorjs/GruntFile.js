@@ -17,6 +17,7 @@ module.exports = function(grunt) {
                     'scripts/sir-trevor.js',
                     'scripts/CodeBlock.js',
                     'scripts/ColumnsBlock.js',
+                    'scripts/ImageCaption.js',
 
                 ],
                 dest: '<%= dist %>/<%= pkg.name %>-<%= pkg.version %>.min.js'

@@ -30,7 +30,7 @@ class PostContent extends PostContentBase
         return array_merge(
             parent::rules(),
             [
-//                ['file', 'file', 'extensions' => 'jpg,png,gif,mp4,pdf,svg,mov,mpeg', 'skipOnEmpty' => false],
+                ['file', 'file', 'extensions' => 'jpg,png,gif,mp4,pdf,svg,mov,mpeg', 'skipOnEmpty' => false],
             ]
         );
     }

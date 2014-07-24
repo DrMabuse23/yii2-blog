@@ -12,7 +12,7 @@ use yii\bootstrap\ActiveForm;
 
 <div class="post-content-form">
 
-    <?php $form = ActiveForm::begin(['enableClientValidation' => false]); ?>
+    <?php $form = ActiveForm::begin(['enableClientValidation' => false,'options' => ['enctype'=>"multipart/form-data"]]); ?>
 
     <div class="">
         <?php $this->beginBlock('main'); ?>
