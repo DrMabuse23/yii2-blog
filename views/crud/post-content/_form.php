@@ -18,7 +18,10 @@ use yii\bootstrap\ActiveForm;
         <?php $this->beginBlock('main'); ?>
         <p>
             
-			<?=  $form->field($model, 'default_html')->widget(\drmabuse\blog\extensions\sirtrevorjs\SirTrevorWidget::className())  ?>
+			<?=  $form->field($model, 'default_html')->widget(\drmabuse\sirtrevorjs\SirTrevorWidget::className(),[
+                    'imageUploadUrl' => yii\helpers\Url::to(['/blog/crud/post-content/upload']),
+                    'language' => 'de'
+                ])  ?>
 			<?=         $form->field($model, 'post_id')->dropDownList(
             \yii\helpers\ArrayHelper::map(drmabuse\blog\models\app\Post::find()->all(),'id','default_title'),
             ['prompt'=>'Choose...']    // relation provider
