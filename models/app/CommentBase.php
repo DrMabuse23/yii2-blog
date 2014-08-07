@@ -11,7 +11,7 @@ use Yii;
  * @property string $content
  * @property integer $publish_status
  * @property integer $create_time
- * @property string $author
+ * @property string Pascal Brewing
  * @property string $email
  * @property string $url
  * @property integer $post_id

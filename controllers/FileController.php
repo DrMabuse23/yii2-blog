@@ -1,7 +1,6 @@
 <?php
 /**
- * @link http://www.diemeisterei.de/
- * @copyright Copyright (c) 2014 diemeisterei GmbH, Stuttgart
+
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,7 +30,7 @@ use yii\widgets\Menu;
 /**
  * Class FileController
  * @package backend\controllers
- * @author $Author
+ * @author Pascal Brewing
  */
 class FileController extends Controller
 {
