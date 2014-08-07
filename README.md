@@ -4,6 +4,8 @@ simple blog module
 
 Version 0.0.2
 
+[![Latest Stable Version](https://poser.pugx.org/drmabuse/yii2-blog/v/stable.svg)](https://packagist.org/packages/drmabuse/yii2-blog) [![Total Downloads](https://poser.pugx.org/drmabuse/yii2-blog/downloads.svg)](https://packagist.org/packages/drmabuse/yii2-blog) [![Latest Unstable Version](https://poser.pugx.org/drmabuse/yii2-blog/v/unstable.svg)](https://packagist.org/packages/drmabuse/yii2-blog) [![License](https://poser.pugx.org/drmabuse/yii2-blog/license.svg)](https://packagist.org/packages/drmabuse/yii2-blog)
+
 Installation
 ------------
 
