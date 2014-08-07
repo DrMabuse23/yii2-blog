@@ -2,9 +2,12 @@
 	"name": "drmabuse/yii2-blog",
 	"description": "simple blog module",
 	"type": "yii2-extension",
-	"keywords": ["yii2","blog"],
+	"keywords": [
+		"yii2",
+		"blog"
+	],
 	"license": "MIT",
-    "homepage":"https://github.com/DrMabuse23/yii2-blog",
+	"homepage": "https://github.com/DrMabuse23/yii2-blog",
 	"authors": [
 		{
 			"name": "Pascal Brewing",
@@ -16,10 +19,10 @@
 			"drmabuse\\blog\\": ""
 		}
 	},
-    "require": {
-        "yiisoft/yii2": "*"
-    },
-    "require-dev": {
-        "schmunk42/yii2-giiant": "dev-develop"
-    }
+	"require": {
+		"yiisoft/yii2": "*"
+	},
+	"require-dev": {
+		"schmunk42/yii2-giiant": "dev-develop"
+	}
 }

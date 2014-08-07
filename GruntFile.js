@@ -19,7 +19,16 @@ module.exports = function (grunt) {
                         to: 'Version <%= pkg.version %>'
                     }
                 ]
-            }
+            }, blog: {
+                src: ['BlogModule.php'],
+                overwrite: true,
+                replacements: [
+                    {
+                        from: /\d{1,1}\.\d{1,2}\.\d{1,2}/g,
+                        to: '<%= pkg.version %>'
+                    }
+                ]
+            },
 
         },
         uglify: {
