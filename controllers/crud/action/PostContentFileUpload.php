@@ -11,6 +11,7 @@ namespace drmabuse\blog\controllers\crud\action;
 
 use drmabuse\blog\models\app\PostContent;
 use yii\base\Action;
+use yii\console\Response;
 use yii\helpers\FileHelper;
 use yii\helpers\Json;
 use yii\helpers\VarDumper;
@@ -39,16 +40,25 @@ class PostContentFileUpload extends Action
     {
 
         $model = new PostContent();
-        $model->file = UploadedFile::getInstance($model, 'file');
-        if ($model->file->saveAs(\Yii::getAlias('@app') . '/web/' . $this->uploadPath . '/' . $model->file->name)) {
-            echo Json::encode(
-                [
-                    "file" => [
-                        "url" => $this->uploadPath . '/' . $model->file->name
-                    ]
-                ]
-            );
 
+        $model->file = UploadedFile::getInstanceByName('attachment[file]');
+
+        $response = new \yii\web\Response();
+        $response->format = \yii\web\Response::FORMAT_JSON;
+
+
+        if ($model->file->saveAs(\Yii::getAlias('@app') . '/web/' . $this->uploadPath . '/' . $model->file->name)) {
+            $response->setStatusCode(200);
+            $response->data = [
+                "file" => [
+                    "url" => $this->uploadPath . '/' . $model->file->name,
+                ]
+            ];
+            \Yii::$app->end(0,$response);
         }
+
+        $response->setStatusCode(500);
+        $response->statusText = "File could not be saved.";
+        \Yii::$app->end(0, $response);
     }
 }
