@@ -1,0 +1,22 @@
+{
+  "name": "yii2-blog",
+  "version": "0.0.1",
+  "description": "yii2-blog module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pascal Brewing",
+  "license": "BSD3",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-bumpup": "~0.5.0",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-release": "*",
+    "grunt-text-replace": "^0.3.12"
+  }
+}

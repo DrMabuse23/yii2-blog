@@ -2,6 +2,8 @@ yii2-blog
 =========
 simple blog module
 
+Version 
+
 Installation
 ------------
 

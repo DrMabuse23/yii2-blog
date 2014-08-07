@@ -44,32 +44,7 @@ AppAsset::register($this);
             'url' => ['/site/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
-        $menuItems[] = [
-            'label' => 'Blog',
-            'items' => [
-                [
-                    'label' => 'Category',
-                    'url' => \yii\helpers\Url::to(['crud/category'])
-                ],
-                [
-                    'label' => 'Post',
-                    'url' => \yii\helpers\Url::to(['crud/post'])
-                ],
-                [
-                    'label' => 'Post-Content',
-                    'url' => \yii\helpers\Url::to(['crud/post-content'])
-                ],
-                [
-                    'label' => 'Seo',
-                    'url' => \yii\helpers\Url::to(['crud/seo'])
-                ],
-                [
-                    'label' => 'Comment',
-                    'url' => \yii\helpers\Url::to(['crud/comment'])
-                ],
-
-            ]
-        ];
+        $menuItems[] = \drmabuse\blog\BlogModule::getBlogMenu();
     }
     echo Nav::widget(
         [
