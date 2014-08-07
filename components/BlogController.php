@@ -20,5 +20,5 @@ use yii\web\Controller;
  */
 class BlogController extends  Controller{
 
-    public $layout = 'main';
+//    public $layout = 'main';
 }
