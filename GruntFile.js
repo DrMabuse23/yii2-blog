@@ -19,37 +19,8 @@ module.exports = function (grunt) {
                         to: 'Version <%= pkg.version %>'
                     }
                 ]
-            },
-            sirtrevorwidget_php: {
-                src: ['SirTrevorWidget.php'],
-                overwrite: true,
-                replacements: [
-                    {
-                        from: /\d{1,1}\.\d{1,2}\.\d{1,2}/g,
-                        to: '<%= pkg.version %>'
-                    }
-                ]
-            },
-            asset_php: {
-                src: ['assets/SirTrevorAsset.php'],
-                overwrite: true,
-                replacements: [
-                    {
-                        from: /dist\/styles\/yii2-sirtrevorjs-\d{1,1}\.\d{1,2}\.\d{1,2}/g,
-                        to: 'dist/styles/yii2-sirtrevorjs-<%= pkg.version %>'
-                    }
-                ]
-            },
-            asset_php_js: {
-                src: ['assets/SirTrevorAsset.php'],
-                overwrite: true,
-                replacements: [
-                    {
-                        from: /dist\/scripts\/yii2-sirtrevorjs-\d{1,1}\.\d{1,2}\.\d{1,2}/g,
-                        to: 'dist/scripts/yii2-sirtrevorjs-<%= pkg.version %>'
-                    }
-                ]
             }
+
         },
         uglify: {
             options: {
@@ -93,35 +64,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd:'<%= bower %>/sir-trevor-js/locales',
+                        cwd:'<%= bower %>',
                         src: ['**'],
                         dest: '<%= dist %>/scripts/locales',
-                        filter: 'isFile'
-                    }
-                ]
-            },
-            styles: {
-                files: [
-                    {
-                        expand: true,
-                        cwd:'<%= bower %>/sir-trevor-js',
-                        src: ['*.css'],
-                        dest: '<%= web %>/styles',
-                        filter: 'isFile'
-                    }
-                ]
-            },
-            vendor:{
-                files:[
-                    {
-                        expand: true,
-                        cwd: '<%= bower %>',
-                        src: [
-                            'underscore/underscore.js',
-                            'Eventable/eventable.js',
-                            'sir-trevor-js/sir-trevor.js'
-                        ],
-                        dest: '<%= web %>/scripts/lib',
                         filter: 'isFile'
                     }
                 ]
@@ -138,21 +83,8 @@ module.exports = function (grunt) {
                     '<%= bower %>/sir-trevor-js/sir-trevor.js'
                 ],
                 dest: '<%= dist %>/scripts/lib/vendor-<%= pkg.name %>-<%= pkg.version %>.js'
-            },
-            blocks: {
-                src: [
-                    '<%= web %>/scripts/blocks/*',
-                ],
-                dest: '<%= dist %>/scripts/blocks-<%= pkg.name %>-<%= pkg.version %>.js'
-            },
-
-            css: {
-                src: [
-                    '<%= bower %>sir-trevor-js/sir-trevor.css',
-                    '<%= bower %>sir-trevor-js/sir-trevor-icons.css'
-                ],
-                dest: '<%= dist %>/styles/<%= pkg.name %>-<%= pkg.version %>.css'
             }
+
         }
     });
 
