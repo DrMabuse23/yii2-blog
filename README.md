@@ -14,13 +14,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist yii2-blog/yii2-blog "*"
+php composer.phar require --prefer-dist drmabuse/yii2-blog "*"
 ```
 
 or add
 
 ```
-"yii2-blog/yii2-blog": "*"
+"drmabuse/yii2-blog": "*"
 ```
 
 to the require section of your `composer.json` file.
