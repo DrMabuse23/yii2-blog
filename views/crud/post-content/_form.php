@@ -27,7 +27,8 @@ use yii\bootstrap\ActiveForm;
                 \drmabuse\sirtrevorjs\SirTrevorWidget::className(),
                 [
                     'imageUploadUrl' => yii\helpers\Url::to(['/blog/crud/post-content/upload']),
-                    'language'       => 'de'
+                    'language'       => 'de',
+                    'block_type' => 'full'
                 ]
             ) ?>
             <?= $form->field($model, 'post_id')->dropDownList(
